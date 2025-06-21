@@ -1,5 +1,5 @@
 # Lec-01
-##  1 What is a programming Language & why C++ ?
+##  1) What is a programming Language & why C++ ?
 ## What is a **Programming Language**?
 
 A **programming language** is a way for **humans to communicate with computers**.
@@ -45,7 +45,7 @@ C++ is one of the **most powerful and widely used** programming languages. Here'
 | Financial Systems  | High-speed trading software                |
 
 ---
-## 2. Installation of G++:
+## 2) Installation of G++:
 ##  💻 🔹 For **Windows** (using MinGW)
 
 ### ✅ Step 1: Download MinGW
