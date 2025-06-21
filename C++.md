@@ -33,7 +33,6 @@ C++ is one of the **most powerful and widely used** programming languages. Here'
 
 * Many modern languages (like Java, C#, and even parts of Python) are influenced by C++. Learning C++ helps you **understand how computers work internally**.
 
----
 
 ### 🔹 Where is C++ used?
 
@@ -44,10 +43,6 @@ C++ is one of the **most powerful and widely used** programming languages. Here'
 | Competitive Coding | Because it's fast and has STL              |
 | Embedded Systems   | Programming microcontrollers and hardware  |
 | Financial Systems  | High-speed trading software                |
-
----
-
-Sure! Here’s a step-by-step guide to **install `g++` (GNU C++ Compiler)** on **Windows**, **Linux**, and **macOS**:
 
 ---
 ## 2. Installation of G++:
