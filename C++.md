@@ -6,6 +6,7 @@ A **programming language** is a way for **humans to communicate with computers**
 
 * It provides a **set of rules** (syntax) and **words** (keywords) to write instructions that a computer can **understand and execute**.
 * These instructions tell the computer **what to do**, like calculations, decision making, repeating actions, etc.
+* C++ is a general-purpose programming language created by Bjarne Stroustrup in 1979 as an extension of the C programming language. It supports both procedural and object-oriented programming (OOP).
 
 
 ### 🔹 Why **C++**?
