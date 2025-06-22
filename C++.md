@@ -325,5 +325,150 @@ Local: 50
 
 2) Output Stream: Direction of flow of bytes takes place from main memory to the output device (for example Display)
 
+---
+---
 
+# Lec-06
 
+## Header files & Operators:
+
+### 📘 Header Files:
+
+* **Pre-written code**
+* Start with `#include`
+* Examples: `<iostream>`, `<cmath>`, `<string>`, etc.
+
+### 🔢 Operators:
+
+* Perform operations like math, logic, comparison
+* Common types: Arithmetic, Assignment, Comparison, Logical
+
+---
+---
+
+# Lec-07
+
+## Reference Variables & Typecasting:
+
+## 🔷 1. **Reference Variables in C++**
+
+A **reference variable** is another **name (alias)** for an existing variable.
+It **refers to the same memory location**, not a copy.
+
+---
+
+### 🔷 Syntax:
+
+```cpp
+datatype &ref = original;
+```
+
+---
+
+### ✅ Example:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int x = 10;
+    int &y = x;  // y is a reference to x
+
+    cout << "x = " << x << ", y = " << y << endl;
+
+    y = 20;  // changing y will also change x
+    cout << "x = " << x << ", y = " << y << endl;
+
+    return 0;
+}
+```
+
+---
+
+### 🧾 Output:
+
+```
+x = 10, y = 10
+x = 20, y = 20
+```
+
+### 🧠 Key Points:
+
+* `&y` means `y` is a **reference** to `x`.
+* Changing `y` also changes `x` (because they point to the **same memory**).
+
+---
+
+## 🔷 2. **Typecasting in C++**
+
+### 📌 What is Typecasting?
+
+**Typecasting** means **converting one data type into another**.
+
+---
+
+### 🔷 Two Types:
+
+| Type         | Syntax                           | Example                    |
+| ------------ | -------------------------------- | -------------------------- |
+| **Implicit** | Automatic conversion by compiler | `int x = 5.7;` (becomes 5) |
+| **Explicit** | Done manually by programmer      | `float(x)`, `(int)y`       |
+
+---
+
+### ✅ Example 1: Implicit Typecasting
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    float f = 5.7;
+    int x = f; // float to int automatically (implicit)
+
+    cout << "x = " << x << endl;  // Output: x = 5
+
+    return 0;
+}
+```
+
+---
+
+### ✅ Example 2: Explicit Typecasting
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a = 10, b = 3;
+
+    float result = (float)a / b; // casting a to float
+    cout << "Result = " << result << endl;  // Output: 3.3333
+
+    return 0;
+}
+```
+
+---
+
+### 🧠 Key Points:
+
+| Cast Type  | What it does                            | Example               |
+| ---------- | --------------------------------------- | --------------------- |
+| `(int)`    | Converts to integer                     | `(int)3.9` → `3`      |
+| `(float)`  | Converts to float                       | `(float)3/2` → `1.5`  |
+| `(double)` | Converts to double (more precise float) | `(double)5/2` → `2.5` |
+
+---
+
+## ✅ Summary Table:
+
+| Concept       | Meaning                            | Example        |
+| ------------- | ---------------------------------- | -------------- |
+| Reference Var | Another name for the same variable | `int &y = x;`  |
+| Typecasting   | Converting one type to another     | `(float)a / b` |
+
+---
+---
