@@ -118,7 +118,106 @@ g++ hello.cpp -o hello
 * 1979 -->Bjarne Stroustrup
 *  fast Program, more control via system resources + memory management
 *  High Performance
-*  Update:
+*  Updates:
      1) 2011 -->C++11
      2) 2014 -->C++14
      3) 2017 -->C++17
+
+
+
+### 🔷 Simple C++ Program
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "Hello, world!" << endl;
+    return 0;
+}
+```
+
+---
+
+### 🔍 Line-by-line and word-by-word Explanation
+
+---
+
+#### 🔹 `#include <iostream>`
+
+* `#include` → A **preprocessor directive**. It tells the compiler to **include** a file before starting the actual compilation.
+* `<iostream>` → This is a **header file** that lets you use **input and output**, like `cin` and `cout`.
+
+📌 Think of this line as:
+👉 *"Hey compiler, include the file that lets me use `cout` to print and `cin` to take input."*
+
+---
+
+#### 🔹 `using namespace std;`
+
+* `using` → Allows us to **avoid writing `std::`** before things like `cout`, `cin`, etc.
+* `namespace` → A **container** for identifiers (names). `std` is the **standard namespace**.
+* `std` → Stands for **standard**. It has useful stuff like `cout`, `cin`, `string`, etc.
+
+📌 This line means:
+👉 *"I will use standard names directly, no need to write `std::cout`, I can just write `cout`."*
+
+---
+
+#### 🔹 `int main() {`
+
+* `int` → Return type of the function. It means this function will return an **integer value**.
+* `main()` → The **starting point** of every C++ program. It’s where the program begins.
+* `{` → Start of the **main function’s body** (all code inside this will run).
+
+📌 It means:
+👉 *"This is the main function. Start here!"*
+
+---
+
+#### 🔹 `cout << "Hello, world!" << endl;`
+
+* `cout` → Stands for **"character output"**. It prints to the screen.
+* `<<` → Called the **insertion operator**, it sends data to `cout`.
+* `"Hello, world!"` → A **string literal**, the actual message being printed.
+* `endl` → Ends the line and **moves to the next line**. Like pressing "Enter".
+* `;` → Ends the statement.
+
+📌 It means:
+👉 *"Print ‘Hello, world!’ to the screen and go to a new line."*
+
+---
+
+#### 🔹 `return 0;`
+
+* `return` → Sends a value **back to the system**.
+* `0` → Means the program ended **successfully**.
+* `;` → Ends the statement.
+
+📌 It means:
+👉 *"I'm done. Everything went okay."*
+
+---
+
+#### 🔹 `}`
+
+* This closes the **main function**.
+
+---
+
+### ✅ Output
+
+```
+Hello, world!
+```
+
+---
+
+Would you like me to explain another example like:
+
+* taking input from user
+* doing math (like addition)
+* using `if` conditions
+
+Let me know!
+
