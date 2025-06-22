@@ -212,12 +212,13 @@ Hello, world!
 ```
 
 ---
+---
 
-Would you like me to explain another example like:
+# Lec-03
 
-* taking input from user
-* doing math (like addition)
-* using `if` conditions
 
-Let me know!
+
+
+
+
 
