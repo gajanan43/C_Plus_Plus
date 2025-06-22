@@ -116,4 +116,9 @@ g++ hello.cpp -o hello
 
 # Lec-02
 * 1979 -->Bjarne Stroustrup
-*  fast Program, more control via system resources + memory management  
+*  fast Program, more control via system resources + memory management
+*  High Performance
+*  Update:
+     1) 2011 -->C++11
+     2) 2014 -->C++14
+     3) 2017 -->C++17
