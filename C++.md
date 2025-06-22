@@ -293,8 +293,8 @@ Local: 50
 
 ### 📌 What is a Data Type?
 
-A **data type** tells the compiler **what kind of data** a variable will store.
-Data types in C++ are categorized in three groups:
+* A **data type** tells the compiler **what kind of data** a variable will store.
+* Data types in C++ are categorized in three groups:
 1) Built-in:
    * int
    * float
