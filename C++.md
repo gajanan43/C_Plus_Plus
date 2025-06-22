@@ -472,3 +472,154 @@ int main() {
 
 ---
 ---
+
+# Lec-08
+
+## Constants, Manipulators & Operator Precedence:
+
+## 🔷 1. **Constants in C++**
+
+### 📌 What is a Constant?
+
+A **constant** is a variable whose value **cannot be changed** once it is defined.
+
+---
+
+### ✅ Syntax:
+
+```cpp
+const datatype variable = value;
+```
+
+---
+
+### ✅ Example:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    const int age = 18;
+    // age = 20; ❌ Error! Cannot modify a constant
+
+    cout << "Age is: " << age << endl;
+    return 0;
+}
+```
+
+### 🧠 Key Points:
+
+* Use `const` before a variable to make it constant.
+* Changing a constant value will give a **compile-time error**.
+
+---
+
+## 🔷 2. **Manipulators in C++**
+
+### 📌 What are Manipulators?
+
+**Manipulators** are used to **format output** — like spacing, alignment, precision, etc.
+
+### ✅ Common Manipulators (from `<iomanip>`):
+
+| Manipulator       | Use                      | Example                            |
+| ----------------- | ------------------------ | ---------------------------------- |
+| `endl`            | Ends the line (new line) | `cout << "Hello" << endl;`         |
+| `setw(n)`         | Sets width of output     | `cout << setw(5) << 10;`           |
+| `setprecision(n)` | Sets decimal precision   | `cout << setprecision(2) << 3.14;` |
+| `fixed`           | Fix decimal places       | Used with `setprecision()`         |
+
+> 💡 Include `#include <iomanip>` for these manipulators.
+
+---
+
+### ✅ Example:
+
+```cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    float pi = 3.14159;
+
+    cout << "Default: " << pi << endl;
+    cout << "Fixed & setprecision(2): " << fixed << setprecision(2) << pi << endl;
+    cout << "setw(10): " << setw(10) << pi << endl;
+
+    return 0;
+}
+```
+
+### 🧾 Output:
+
+```
+Default: 3.14159
+Fixed & setprecision(2): 3.14
+setw(10):       3.14
+```
+
+---
+
+## 🔷 3. **Operator Precedence in C++**
+
+### 📌 What is Operator Precedence?
+
+When **more than one operator** is used in an expression, **operator precedence** decides **which is solved first**.
+
+---
+
+### ✅ Example:
+
+```cpp
+int result = 10 + 5 * 2;
+```
+
+* Multiplication (`*`) is **done first**, then addition.
+* So `5 * 2 = 10`, then `10 + 10 = 20`
+
+---
+
+### 🔢 C++ Operator Precedence (High to Low):
+
+| Precedence Level | Operators            | Description              |    |                 |
+| ---------------- | -------------------- | ------------------------ | -- | --------------- |
+| 1 (highest)      | `()`, `[]`, `.`      | Function call, access    |    |                 |
+| 2                | `++`, `--`, `!`, `-` | Unary operators          |    |                 |
+| 3                | `*`, `/`, `%`        | Multiplication, Division |    |                 |
+| 4                | `+`, `-`             | Addition, Subtraction    |    |                 |
+| 5                | `<`, `>`, `<=`, `>=` | Relational operators     |    |                 |
+| 6                | `==`, `!=`           | Equality check           |    |                 |
+| 7                | `&&`, \`             |                          | \` | Logical AND, OR |
+| 8 (lowest)       | `=`, `+=`, `-=` etc. | Assignment               |    |                 |
+
+---
+
+### ✅ Example:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a = 5, b = 10, c = 3;
+    int result = a + b * c; // b*c happens first
+
+    cout << "Result: " << result << endl; // 5 + (10 * 3) = 35
+    return 0;
+}
+```
+
+---
+
+## ✅ Summary Table:
+
+| Concept                 | Description                             | Example                     |
+| ----------------------- | --------------------------------------- | --------------------------- |
+| **Constants**           | Fixed value, can’t change               | `const int x = 10;`         |
+| **Manipulators**        | Format output (`endl`, `setw`, `fixed`) | `cout << setw(5) << x;`     |
+| **Operator Precedence** | Order in which operations are performed | `a + b * c` → `b * c` first |
+
+---
+---
