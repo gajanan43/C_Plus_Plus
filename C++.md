@@ -217,7 +217,11 @@ Hello, world!
 # Lec-03
 
 ## Variables & Comments:
+1)Variables:
+👉 Variables are like boxes that store data (like numbers, words, etc.)
 
+2)Comments:
+👉 Comments are notes for the programmer. The compiler ignores them.
 
 
 
