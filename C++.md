@@ -115,5 +115,5 @@ g++ hello.cpp -o hello
 ---
 
 # Lec-02
--> 1979 -->Bjarne Stroustrup
--> fast Program, more control via system resources + memory management  
+* 1979 -->Bjarne Stroustrup
+*  fast Program, more control via system resources + memory management  
