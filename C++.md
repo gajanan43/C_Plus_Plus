@@ -123,7 +123,7 @@ g++ hello.cpp -o hello
      2) 2014 -->C++14
      3) 2017 -->C++17
 
-
+## Basic Structure of Program
 
 ### 🔷 Simple C++ Program
 
@@ -216,6 +216,7 @@ Hello, world!
 
 # Lec-03
 
+## Variables & Comments:
 
 
 
