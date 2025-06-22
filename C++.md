@@ -223,6 +223,101 @@ Hello, world!
 2)Comments:
 👉 Comments are notes for the programmer. The compiler ignores them.
 
+---
+---
+
+# Lec-04
+
+## Variable Scope & Data Type:
+
+Great! Let's learn about **Variable Scope** and **Data Types** in C++ with easy explanations and examples. 🧠✨
+
+---
+
+## 🔶 PART 1: **Variable Scope in C++**
+
+### 📌 What is Scope?
+
+**Scope** means **where a variable can be used (seen/accessible)** in your program.
+
+---
+
+### ✅ Types of Scope:
+
+| Scope Type       | Meaning                                                                                  |
+| ---------------- | ---------------------------------------------------------------------------------------- |
+| **Global Scope** | Variable is declared **outside** all functions — can be used **anywhere**.               |
+| **Local Scope**  | Variable is declared **inside** a function or block — used **only there**.               |
+| **Block Scope**  | Inside `{}` brackets like in loops or `if` statements — used only **inside that block**. |
+
+---
+
+### 🔷 Example:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int globalVar = 100;  // 🌍 Global Scope
+
+int main() {
+    int localVar = 50;  // 📌 Local to main()
+
+    if (true) {
+        int blockVar = 20;  // 🔒 Block Scope
+        cout << "Inside block: " << blockVar << endl;
+    }
+
+    // cout << blockVar << endl; ❌ Error! blockVar is not visible here
+
+    cout << "Global: " << globalVar << endl;
+    cout << "Local: " << localVar << endl;
+
+    return 0;
+}
+```
+
+---
+
+### 🔍 Output:
+
+```
+Inside block: 20
+Global: 100
+Local: 50
+```
+
+---
+
+## 🔶 PART 2: **Data Types in C++**
+
+### 📌 What is a Data Type?
+
+A **data type** tells the compiler **what kind of data** a variable will store.
+Data types in C++ are categorized in three groups:
+1)Built-in:
+   * int
+   * float
+   * char
+   * double
+   * bool
+2)User-defined :
+   * struct
+   * union
+   * enum
+3)Derived:
+   * array
+   * function
+   * pointer
+
+
+---
+---
+
+# Lec-05
+
+## Basic input/Output:
+
 
 
 
