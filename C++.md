@@ -295,17 +295,17 @@ Local: 50
 
 A **data type** tells the compiler **what kind of data** a variable will store.
 Data types in C++ are categorized in three groups:
-1)Built-in:
+1) Built-in:
    * int
    * float
    * char
    * double
    * bool
-2)User-defined :
+2) User-defined :
    * struct
    * union
    * enum
-3)Derived:
+3) Derived:
    * array
    * function
    * pointer
