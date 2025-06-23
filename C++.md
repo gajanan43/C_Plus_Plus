@@ -623,3 +623,131 @@ int main() {
 
 ---
 ---
+# Lec-9
+
+## Control Structures & If Else and Switch-Case Statement:
+
+## 🔷 1. **Control Structures in C++**
+
+### 📌 What are Control Structures?
+
+Control structures **control the flow of your code** — they decide **which part of the code to run**.
+
+---
+
+### ✅ Types of Control Structures:
+
+| Type           | Purpose                                       |
+| -------------- | --------------------------------------------- |
+| **Sequential** | Code runs line by line                        |
+| **Selection**  | Code chooses between options (`if`, `switch`) |
+| **Looping**    | Repeats code (`for`, `while`)                 |
+| **Jumping**    | Jumps to another part (`break`, `continue`)   |
+
+---
+
+## 🔷 2. **If, Else If, Else**
+
+### ✅ Syntax:
+
+```cpp
+if (condition) {
+    // code runs if condition is true
+}
+else if (another_condition) {
+    // code runs if this new condition is true
+}
+else {
+    // code runs if no condition above is true
+}
+```
+
+---
+
+### ✅ Example:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int marks;
+    cout << "Enter your marks: ";
+    cin >> marks;
+
+    if (marks >= 90) {
+        cout << "Grade A" << endl;
+    } else if (marks >= 75) {
+        cout << "Grade B" << endl;
+    } else if (marks >= 50) {
+        cout << "Grade C" << endl;
+    } else {
+        cout << "Fail" << endl;
+    }
+
+    return 0;
+}
+```
+
+## 🔷 3. **Switch-Case Statement**
+
+### 📌 Use when you want to match **one variable** with **many exact values** (like menu, options, etc.)
+
+---
+
+### ✅ Syntax:
+
+```cpp
+switch (variable) {
+    case value1:
+        // code for value1
+        break;
+    case value2:
+        // code for value2
+        break;
+    default:
+        // code if none match
+}
+```
+
+---
+
+### ✅ Example:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int day;
+    cout << "Enter day number (1-7): ";
+    cin >> day;
+
+    switch (day) {
+        case 1: cout << "Monday"; break;
+        case 2: cout << "Tuesday"; break;
+        case 3: cout << "Wednesday"; break;
+        case 4: cout << "Thursday"; break;
+        case 5: cout << "Friday"; break;
+        case 6: cout << "Saturday"; break;
+        case 7: cout << "Sunday"; break;
+        default: cout << "Invalid day";
+    }
+
+    return 0;
+}
+---
+
+## ✅ Summary Table:
+
+| Structure | Used For            | Best When...                    |
+| --------- | ------------------- | ------------------------------- |
+| `if`      | Single condition    | Only one check needed           |
+| `else if` | Multiple conditions | Check multiple ranges           |
+| `else`    | Fallback/default    | Nothing else is true            |
+| `switch`  | Match single value  | Exact value matching like menus |
+
+---
+---
+
+
