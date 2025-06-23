@@ -736,6 +736,7 @@ int main() {
 
     return 0;
 }
+```
 ---
 
 ## ✅ Summary Table:
@@ -749,5 +750,418 @@ int main() {
 
 ---
 ---
+# Lec-10
 
+## For, While and do-while loops:
+
+### 🧠 Why Use Loops?
+
+Loops are used to **repeat a block of code** multiple times, either a fixed number of times or until a condition is met.
+
+---
+
+## 🔷 1. **For Loop**
+
+### ✅ Syntax:
+
+```cpp
+for (initialization; condition; update) {
+    // code to repeat
+}
+```
+
+---
+
+### ✅ Example:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    for (int i = 1; i <= 5; i++) {
+        cout << "Hello " << i << endl;
+    }
+    return 0;
+}
+```
+
+### 🧾 Output:
+
+```
+Hello 1  
+Hello 2  
+Hello 3  
+Hello 4  
+Hello 5
+```
+
+> ✅ Best when you know **how many times** to repeat.
+
+---
+
+## 🔷 2. **While Loop**
+
+### ✅ Syntax:
+
+```cpp
+while (condition) {
+    // code to repeat
+}
+```
+
+---
+
+### ✅ Example:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int i = 1;
+    while (i <= 5) {
+        cout << "While Loop: " << i << endl;
+        i++;
+    }
+    return 0;
+}
+```
+
+### 🧾 Output:
+
+```
+While Loop: 1  
+While Loop: 2  
+While Loop: 3  
+While Loop: 4  
+While Loop: 5
+```
+
+> ✅ Best when you **don’t know in advance** how many times to loop.
+
+---
+
+## 🔷 3. **Do-While Loop**
+
+### ✅ Syntax:
+
+```cpp
+do {
+    // code to repeat
+} while (condition);
+```
+
+---
+
+### ✅ Example:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int i = 1;
+    do {
+        cout << "Do-While Loop: " << i << endl;
+        i++;
+    } while (i <= 5);
+
+    return 0;
+}
+```
+
+### 🧾 Output:
+
+```
+Do-While Loop: 1  
+Do-While Loop: 2  
+Do-While Loop: 3  
+Do-While Loop: 4  
+Do-While Loop: 5
+```
+
+> ✅ It runs **at least once** even if the condition is **false** at the beginning.
+
+---
+
+## 🔁 Difference Between Loops:
+
+| Loop Type  | Condition Checked? | Use When...                     |
+| ---------- | ------------------ | ------------------------------- |
+| `for`      | Before each loop   | You know how many times to loop |
+| `while`    | Before each loop   | Loop until condition is false   |
+| `do-while` | After running once | Must run at least once          |
+
+---
+
+### ⚠️ Example Where `do-while` is Needed:
+
+```cpp
+int n;
+do {
+    cout << "Enter positive number: ";
+    cin >> n;
+} while (n <= 0);
+```
+
+> This ensures the user is **prompted at least once**, even if `n` is already valid.
+
+---
+
+## ✅ Summary:
+
+| Loop       | Checks Condition | Executes at Least Once | Best For                    |
+| ---------- | ---------------- | ---------------------- | --------------------------- |
+| `for`      | Before           | ❌                      | Known number of repetitions |
+| `while`    | Before           | ❌                      | Unknown repetitions         |
+| `do-while` | After            | ✅                      | At least once, then check   |
+
+---
+---
+
+# Lec-11
+
+## Break and Continue Statements:
+
+## 🔷 1. **`break` Statement**
+
+### 📌 What is `break`?
+
+The `break` statement is used to **exit a loop or switch** **immediately**, even if the condition is still true.
+
+---
+
+### ✅ Syntax:
+
+```cpp
+for (...) {
+    if (condition) {
+        break;
+    }
+}
+```
+
+---
+
+### ✅ Example:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    for (int i = 1; i <= 10; i++) {
+        if (i == 5) {
+            break;  // exits the loop when i == 5
+        }
+        cout << i << " ";
+    }
+    return 0;
+}
+```
+
+### 🧾 Output:
+
+```
+1 2 3 4
+```
+
+> 🚨 Loop **stops immediately** when `i == 5`
+
+---
+
+## 🔷 2. **`continue` Statement**
+
+### 📌 What is `continue`?
+
+The `continue` statement **skips the current iteration** and goes to the **next one** without running the rest of the loop body.
+
+---
+
+### ✅ Syntax:
+
+```cpp
+for (...) {
+    if (condition) {
+        continue;
+    }
+    // code that is skipped when continue is used
+}
+```
+
+---
+
+### ✅ Example:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    for (int i = 1; i <= 5; i++) {
+        if (i == 3) {
+            continue;  // skips when i == 3
+        }
+        cout << i << " ";
+    }
+    return 0;
+}
+```
+
+### 🧾 Output:
+
+```
+1 2 4 5
+```
+
+> 🟡 `3` is **skipped**, rest are printed
+
+---
+
+## 🔁 Use `break` and `continue` in `while` or `do-while` too:
+
+### ✅ Example with `while`:
+
+```cpp
+int i = 0;
+while (i < 5) {
+    i++;
+    if (i == 3) continue;
+    cout << i << " ";
+}
+```
+
+---
+
+## ✅ Summary Table:
+
+| Statement  | What it Does                           | When to Use                             |
+| ---------- | -------------------------------------- | --------------------------------------- |
+| `break`    | Immediately exits the loop or switch   | You want to **stop the loop early**     |
+| `continue` | Skips current loop cycle, goes to next | You want to **skip one iteration only** |
+
+---
+
+### 🧠 Tip:
+
+* `break` = "I'm done, get me out of here!"
+* `continue` = "Skip this one, keep looping!"
+
+---
+---
+
+# Lec-12
+
+## Pointers:
+
+## 🔷 1. **What is a Pointer?**
+
+A **pointer** is a variable that **stores the memory address** of another variable.
+
+Think of it like:
+📦 Variable → stores a value
+🧭 Pointer → stores the **location** (address) of that value
+
+---
+
+## 🔷 2. **Syntax of Pointer**
+
+```cpp
+datatype* pointerName;
+```
+
+* `*` → used to **declare a pointer**
+* `&` → used to **get the address** of a variable
+
+---
+
+## 🔷 3. **Simple Example**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a = 10;
+    int* ptr = &a;  // ptr stores the address of a
+
+    cout << "Value of a: " << a << endl;
+    cout << "Address of a: " << &a << endl;
+    cout << "Pointer (ptr): " << ptr << endl;
+    cout << "Value at ptr: " << *ptr << endl;  // dereferencing
+
+    return 0;
+}
+```
+
+---
+
+### 🧾 Output (Sample):
+
+```
+Value of a: 10  
+Address of a: 0x61ff0c  
+Pointer (ptr): 0x61ff0c  
+Value at ptr: 10
+```
+
+---
+
+## 🔍 Explanation:
+
+| Symbol     | Meaning                                                                   |
+| ---------- | ------------------------------------------------------------------------- |
+| `int* ptr` | Declares a pointer to an integer                                          |
+| `&a`       | "Address of `a`"                                                          |
+| `*ptr`     | "Value at the address stored in `ptr`" (this is called **dereferencing**) |
+
+---
+
+## 🔷 4. **Changing Value Using Pointer**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int x = 5;
+    int* p = &x;
+
+    *p = 20;  // changing value of x using pointer
+
+    cout << "x = " << x << endl;  // Output: x = 20
+    return 0;
+}
+```
+
+### 🧠 Why? Because `*p` refers to the same location as `x`.
+
+---
+
+## ✅ Pointer Summary Table
+
+| Concept         | Syntax     | Meaning                                |
+| --------------- | ---------- | -------------------------------------- |
+| Declare pointer | `int* p;`  | `p` stores address of int              |
+| Address of var  | `&x`       | Returns memory address of `x`          |
+| Dereference ptr | `*p`       | Returns value stored at address in `p` |
+| Change via ptr  | `*p = 20;` | Modifies value at address held by `p`  |
+
+---
+
+## 🔷 5. Bonus: Null Pointer
+
+```cpp
+int* ptr = nullptr;  // pointer points to nothing
+```
+
+Used for **safety** when pointer doesn't have a valid address yet.
+
+---
+---
+
+# Lec-13
+
+## 
 
