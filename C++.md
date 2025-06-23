@@ -1628,7 +1628,568 @@ Result = 20
 
 # Lec-16
 
-## 
+## Call by Value & Call by Reference:
+
+## 🔷 1. **Call by Value**
+
+### 📌 In **Call by Value**, a **copy** of the variable is passed to the function.
+
+* Changes inside the function **do not affect** the original variable.
+
+---
+
+### ✅ Example:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+void changeValue(int x) {
+    x = 100;  // only a copy is changed
+}
+
+int main() {
+    int a = 10;
+    changeValue(a);
+    cout << "Value of a: " << a << endl;  // still 10
+    return 0;
+}
+```
+
+🧾 Output:
+
+```
+Value of a: 10
+```
+
+> ✅ Changes made to `x` **don’t affect** the original `a`.
+
+---
+
+## 🔷 2. **Call by Reference**
+
+### 📌 In **Call by Reference**, the **actual variable** is passed using a **reference**.
+
+* Changes **do affect** the original variable.
+
+---
+
+### ✅ Syntax:
+
+```cpp
+void func(int &x)  // note the &
+```
+
+---
+
+### ✅ Example:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+void changeValue(int &x) {
+    x = 100;  // modifies original variable
+}
+
+int main() {
+    int a = 10;
+    changeValue(a);
+    cout << "Value of a: " << a << endl;  // now 100
+    return 0;
+}
+```
+
+🧾 Output:
+
+```
+Value of a: 100
+```
+
+> ✅ Since `x` is a reference to `a`, changing `x` also changes `a`.
+
+---
+
+## 🔁 Quick Comparison
+
+| Feature                  | Call by Value                 | Call by Reference         |
+| ------------------------ | ----------------------------- | ------------------------- |
+| What is passed?          | A **copy** of the variable    | The **original** variable |
+| Changes affect original? | ❌ No                          | ✅ Yes                     |
+| Syntax                   | `void func(int x)`            | `void func(int &x)`       |
+| Safety                   | Safer (no accidental changes) | Riskier but more powerful |
+
+---
+
+## ✅ Summary
+
+| Concept           | Description                     |
+| ----------------- | ------------------------------- |
+| Call by Value     | Original data is **safe**       |
+| Call by Reference | Data is **shared and modified** |
+| Reference Symbol  | Use `&` in function parameter   |
+
+---
+---
+
+# Lec-17
+
+## Inline Functions, Default Arguments & Constant Arguments:
+
+## 🔷 1. **Inline Functions**
+
+### 📌 What is an Inline Function?
+
+An **inline function** tells the compiler to **insert the function code directly** at the point of the call — instead of making a regular function call.
+
+---
+
+### ✅ Syntax:
+
+```cpp
+inline return_type function_name(parameters) {
+    // small code
+}
+```
+
+---
+
+### ✅ Example:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+inline int square(int x) {
+    return x * x;
+}
+
+int main() {
+    cout << "Square of 4: " << square(4) << endl;
+    return 0;
+}
+```
+
+🧾 Output:
+
+```
+Square of 4: 16
+```
+
+---
+
+### 🧠 Why Use Inline?
+
+| Advantage           | Notes                         |
+| ------------------- | ----------------------------- |
+| Faster Execution    | No overhead of function call  |
+| For small functions | Like `sum()`, `square()`, etc |
+
+---
+
+> ❗ Avoid for **large functions** — it increases code size.
+
+---
+
+## 🔷 2. **Default Arguments**
+
+### 📌 What are Default Arguments?
+
+Default arguments let you call a function **without passing all arguments** — missing ones take default values.
+
+---
+
+### ✅ Syntax:
+
+```cpp
+void greet(string name = "Guest") {
+    cout << "Hello, " << name << endl;
+}
+```
+
+---
+
+### ✅ Example:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+void greet(string name = "Guest") {
+    cout << "Hello, " << name << "!" << endl;
+}
+
+int main() {
+    greet();            // uses default "Guest"
+    greet("Gajanan");   // uses passed value
+    return 0;
+}
+```
+
+🧾 Output:
+
+```
+Hello, Guest!
+Hello, Gajanan!
+```
+
+---
+
+### 🧠 Key Rule:
+
+* Default arguments must be defined **from right to left**.
+
+```cpp
+// ✅ Okay
+void example(int a, int b = 5, int c = 10);
+
+// ❌ Wrong
+void wrong(int a = 5, int b); // error
+```
+
+---
+
+## 🔷 3. **Constant Arguments**
+
+### 📌 What are Constant Arguments?
+
+If you **don’t want a function to modify** the parameter, mark it as `const`.
+
+---
+
+### ✅ Syntax:
+
+```cpp
+void printMessage(const string name);
+```
+
+---
+
+### ✅ Example:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+void show(const int x) {
+    // x = 10; ❌ Not allowed
+    cout << "Value: " << x << endl;
+}
+
+int main() {
+    int num = 5;
+    show(num);  // Safe, num won’t be modified
+    return 0;
+}
+```
+
+🧾 Output:
+
+```
+Value: 5
+```
+
+---
+
+### 🧠 Why Use Constant Arguments?
+
+| Benefit               | When to Use                     |
+| --------------------- | ------------------------------- |
+| Prevents modification | Use for safety in read-only use |
+| Works with references | `void display(const string &s)` |
+
+---
+
+## ✅ Summary Table
+
+| Feature               | Use                                                | Example                           |
+| --------------------- | -------------------------------------------------- | --------------------------------- |
+| **Inline**            | Small function, speed up by avoiding function call | `inline int add(int a, int b)`    |
+| **Default Argument**  | Allow missing parameters in function calls         | `void greet(string name="Guest")` |
+| **Constant Argument** | Prevent parameter from being changed               | `void show(const int x)`          |
+
+---
+---
+
+# Lec-18
+
+## Recursions & Recursive Functions:
+
+## 🔷 1. **What is Recursion?**
+
+> 📌 A recursive function is a function that **calls itself** during its execution.
+
+It breaks a **big problem into smaller sub-problems** until a base condition is met.
+
+---
+
+### ✅ Syntax:
+
+```cpp
+return_type function_name(parameters) {
+    if (base_case)
+        return result;
+    else
+        return function_name(smaller_problem);
+}
+```
+
+---
+
+## 🔷 2. **Simple Example: Factorial**
+
+### ⚙️ `n! = n * (n-1) * (n-2) * ... * 1`
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int factorial(int n) {
+    if (n <= 1)
+        return 1;              // base case
+    else
+        return n * factorial(n - 1);  // recursive call
+}
+
+int main() {
+    int num = 5;
+    cout << "Factorial of " << num << " is " << factorial(num) << endl;
+    return 0;
+}
+```
+
+🧾 Output:
+
+```
+Factorial of 5 is 120
+```
+
+---
+
+## 🔷 3. **Important Concepts**
+
+### ✅ Base Case:
+
+Stops recursion — prevents infinite calls.
+Example: `if (n <= 1) return 1;`
+
+### ✅ Recursive Case:
+
+Function calls itself with a **smaller version** of the problem.
+
+---
+
+## 🔁 Visual Flow for `factorial(3)`
+
+```
+factorial(3)
+→ 3 * factorial(2)
+   → 2 * factorial(1)
+      → return 1
+   → return 2 * 1 = 2
+→ return 3 * 2 = 6
+```
+
+---
+
+## 🔷 4. **Another Example: Fibonacci Series**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int fibonacci(int n) {
+    if (n == 0)
+        return 0;
+    if (n == 1)
+        return 1;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+int main() {
+    int n = 6;
+    cout << "Fibonacci at position " << n << " is " << fibonacci(n) << endl;
+    return 0;
+}
+```
+
+🧾 Output:
+
+```
+Fibonacci at position 6 is 8
+```
+
+---
+
+## ✅ When to Use Recursion?
+
+| ✅ Good For                         | ❌ Not Recommended When               |
+| ---------------------------------- | ------------------------------------ |
+| Tree/graph problems                | Very large input (due to stack size) |
+| Divide & conquer (e.g. merge sort) | When loops are faster and simpler    |
+
+---
+
+## 🔥 Pros & Cons
+
+| Pros                     | Cons                         |
+| ------------------------ | ---------------------------- |
+| Cleaner, elegant code    | Slower due to function calls |
+| Useful for complex logic | Risk of stack overflow       |
+
+---
+
+## ✅ Summary
+
+| Concept            | Description                           |
+| ------------------ | ------------------------------------- |
+| Recursive Function | A function that calls itself          |
+| Base Case          | Ends recursion to avoid infinite loop |
+| Use Cases          | Factorial, Fibonacci, Sorting, Trees  |
+
+---
+---
+
+# Lec-19
+
+## Function Overloading with Examples:
+
+## 🔷 What is Function Overloading?
+
+> 📌 **Function overloading** means having **multiple functions with the same name**, but **different parameters**.
+
+It helps you write **cleaner** and **more readable** code.
+
+---
+
+### ✅ Example (Basic):
+
+```cpp
+#include <iostream>
+using namespace std;
+
+void greet() {
+    cout << "Hello!" << endl;
+}
+
+void greet(string name) {
+    cout << "Hello, " << name << "!" << endl;
+}
+
+int main() {
+    greet();               // calls greet()
+    greet("Gajanan");      // calls greet(string)
+    return 0;
+}
+```
+
+🧾 Output:
+
+```
+Hello!  
+Hello, Gajanan!
+```
+
+---
+
+## 🔷 Rules for Overloading
+
+You can overload functions by changing:
+
+✅ Number of parameters
+✅ Type of parameters
+✅ Order of parameters (if types are different)
+
+---
+
+### ✅ Example 2: Add Function
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int add(int a, int b) {
+    return a + b;
+}
+
+float add(float a, float b) {
+    return a + b;
+}
+
+int main() {
+    cout << add(5, 3) << endl;       // calls int version
+    cout << add(2.5f, 3.2f) << endl; // calls float version
+    return 0;
+}
+```
+
+🧾 Output:
+
+```
+8  
+5.7
+```
+
+---
+
+## 🔷 Why Use Function Overloading?
+
+| ✅ Advantage                      | Example                       |
+| -------------------------------- | ----------------------------- |
+| Use same function name for logic | `add()`, `multiply()`         |
+| Cleaner, easier to remember      | `print(int)`, `print(string)` |
+| Helps with **polymorphism**      | (important in OOP)            |
+
+---
+
+## 🔴 What You **Cannot** Do:
+
+You **cannot overload** based on:
+
+* **Return type only**
+
+```cpp
+// ❌ Invalid: differs only by return type
+int fun(int a);
+float fun(int a); // ❌ error
+```
+
+---
+
+## ✅ Summary Table
+
+| Function Call     | Which Function Runs? |
+| ----------------- | -------------------- |
+| `add(5, 10)`      | `add(int, int)`      |
+| `add(5.0f, 6.0f)` | `add(float, float)`  |
+| `print("Hello")`  | `print(string)`      |
+
+---
+
+### 💡 Bonus Example: Area Function
+
+```cpp
+float area(float r) {
+    return 3.14 * r * r;
+}
+
+int area(int l, int b) {
+    return l * b;
+}
+```
+
+📞 Call:
+
+```cpp
+area(5.0f);  // circle  
+area(10, 4); // rectangle
+```
+
+---
+---
+
+
+
 
 
 
