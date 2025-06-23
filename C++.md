@@ -1163,5 +1163,473 @@ Used for **safety** when pointer doesn't have a valid address yet.
 
 # Lec-13
 
+## Arrays & Pointers Arithmetic:
+
+## 🔷 1. **Arrays in C++**
+
+### 📌 What is an Array?
+
+An **array** is a collection of **elements of the same type**, stored in **contiguous (continuous) memory**.
+
+---
+
+### ✅ Syntax:
+
+```cpp
+datatype arrayName[size];
+```
+
+---
+
+### ✅ Example:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int nums[5] = {10, 20, 30, 40, 50};
+
+    for (int i = 0; i < 5; i++) {
+        cout << nums[i] << " ";
+    }
+    return 0;
+}
+```
+
+### 🧾 Output:
+
+```
+10 20 30 40 50
+```
+
+---
+
+## 🔷 2. **Pointers with Arrays**
+
+In C++, the **name of the array** (e.g., `nums`) acts like a **pointer** to the **first element**.
+
+---
+
+### ✅ Example:
+
+```cpp
+int nums[3] = {5, 10, 15};
+
+cout << nums        << endl; // address of first element
+cout << *nums       << endl; // value at address → 5
+cout << *(nums + 1) << endl; // value at next element → 10
+```
+
+---
+
+## ✅ Pointer Arithmetic
+
+Pointer arithmetic lets you **move through memory** using pointers.
+
+| Expression   | What it does                 | Example Result        |
+| ------------ | ---------------------------- | --------------------- |
+| `ptr + 1`    | Points to next element       | moves 1 element ahead |
+| `*(ptr + i)` | Value at ith index           | same as `arr[i]`      |
+| `ptr++`      | Move pointer to next element | useful in loops       |
+
+---
+
+### 🔷 Full Example:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[4] = {10, 20, 30, 40};
+    int* ptr = arr;  // pointer to the first element
+
+    cout << "Pointer Arithmetic Output:" << endl;
+
+    for (int i = 0; i < 4; i++) {
+        cout << "Value at ptr + " << i << " = " << *(ptr + i) << endl;
+    }
+
+    return 0;
+}
+```
+
+---
+
+### 🧾 Output:
+
+```
+Pointer Arithmetic Output:
+Value at ptr + 0 = 10  
+Value at ptr + 1 = 20  
+Value at ptr + 2 = 30  
+Value at ptr + 3 = 40
+```
+
+---
+
+### 🔍 How it Works in Memory:
+
+If address of `arr[0]` is `0x1000` (assume):
+
+| Index | Element | Address | \*(arr + i) |
+| ----- | ------- | ------- | ----------- |
+| 0     | 10      | 0x1000  | 10          |
+| 1     | 20      | 0x1004  | 20          |
+| 2     | 30      | 0x1008  | 30          |
+| 3     | 40      | 0x100C  | 40          |
+
+> 💡 Integers take 4 bytes each, so each pointer step moves 4 bytes.
+
+---
+
+## ✅ Summary
+
+| Concept            | Example         | Meaning                              |
+| ------------------ | --------------- | ------------------------------------ |
+| Array declaration  | `int arr[5];`   | 5 elements of type int               |
+| Pointer to array   | `int* p = arr;` | Points to first element of `arr`     |
+| Pointer arithmetic | `*(p + i)`      | Accesses next elements like `arr[i]` |
+
+---
+---
+
+# Lec-14:
+
+## Structures, Unions & Enums:
+
+## 🔷 1. **Structures in C++**
+
+### 📌 What is a Structure?
+
+A **structure** groups variables of **different data types** under one name.
+
+---
+
+### ✅ Syntax:
+
+```cpp
+struct StructureName {
+    datatype member1;
+    datatype member2;
+    ...
+};
+```
+
+---
+
+### ✅ Example:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+struct Student {
+    int roll;
+    string name;
+    float marks;
+};
+
+int main() {
+    Student s1 = {101, "Gajanan", 92.5};
+
+    cout << "Name: " << s1.name << endl;
+    cout << "Roll: " << s1.roll << endl;
+    cout << "Marks: " << s1.marks << endl;
+
+    return 0;
+}
+```
+
+---
+
+### 🧠 Key Points:
+
+* Structure groups multiple values.
+* You can access members using `.` (dot operator).
+
+---
+
+## 🔷 2. **Unions in C++**
+
+### 📌 What is a Union?
+
+A **union** is like a structure, but it shares the **same memory** for all its members.
+👉 So only **one member can hold a value at a time**.
+
+---
+
+### ✅ Syntax:
+
+```cpp
+union UnionName {
+    datatype member1;
+    datatype member2;
+    ...
+};
+```
+
+---
+
+### ✅ Example:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+union Data {
+    int intVal;
+    float floatVal;
+};
+
+int main() {
+    Data d;
+    d.intVal = 10;
+    cout << "Integer: " << d.intVal << endl;
+
+    d.floatVal = 5.5;
+    cout << "Float: " << d.floatVal << endl;
+
+    // ⚠️ Now intVal is overwritten
+    cout << "Integer (after float set): " << d.intVal << endl;
+
+    return 0;
+}
+```
+
+---
+
+### 🧠 Output:
+
+```
+Integer: 10  
+Float: 5.5  
+Integer (after float set): garbage value
+```
+
+---
+
+### 🧠 Key Difference:
+
+| Feature | Structure               | Union                          |
+| ------- | ----------------------- | ------------------------------ |
+| Memory  | Each member gets memory | All members share same memory  |
+| Usage   | Store all values        | Store only one value at a time |
+
+---
+
+## 🔷 3. **Enums in C++**
+
+### 📌 What is an Enum?
+
+An **enum** (enumeration) is a way to give **names to integer constants**.
+👉 Makes code **more readable**.
+
+---
+
+### ✅ Syntax:
+
+```cpp
+enum EnumName { VALUE1, VALUE2, ... };
+```
+
+By default:
+
+* `VALUE1 = 0`, `VALUE2 = 1`, etc.
+
+---
+
+### ✅ Example:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+enum Day { MON, TUE, WED, THU, FRI, SAT, SUN };
+
+int main() {
+    Day today = WED;
+
+    if (today == WED) {
+        cout << "It's Wednesday!" << endl;
+    }
+
+    cout << "Value of SUN is: " << SUN << endl; // Output: 6
+
+    return 0;
+}
+```
+
+---
+
+### 🧠 You can also assign custom values:
+
+```cpp
+enum Level { LOW = 1, MEDIUM = 5, HIGH = 10 };
+```
+
+---
+
+## ✅ Summary Table
+
+| Feature | struct                     | union                            | enum                   |
+| ------- | -------------------------- | -------------------------------- | ---------------------- |
+| Use     | Group different data types | Save memory, one value at a time | Define named constants |
+| Memory  | Separate for each member   | Shared for all members           | Not for storing values |
+| Access  | `s.name`, `s.roll`         | `u.intVal`, `u.floatVal`         | `if (x == HIGH)`       |
+
+---
+---
+
+# Lec-15
+
+## Functions & Function Prototypes:
+
+## 🔷 1. **What is a Function?**
+
+A **function** is a block of code that performs a **specific task**.
+
+You can call it **any number of times**, instead of rewriting the same code.
+
+---
+
+### ✅ Types of Functions in C++:
+
+1. **Library functions** – like `sqrt()`, `pow()`, `cin`, `cout`
+2. **User-defined functions** – you create your own functions
+
+---
+
+### ✅ Syntax of a Function:
+
+```cpp
+return_type function_name(parameter_list) {
+    // code to execute
+}
+```
+
+---
+
+### ✅ Example:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+void greet() {
+    cout << "Hello, Gajanan!" << endl;
+}
+
+int main() {
+    greet();  // calling the function
+    greet();  // can call again
+    return 0;
+}
+```
+
+🧾 Output:
+
+```
+Hello, Gajanan!
+Hello, Gajanan!
+```
+
+---
+
+## 🔷 2. **Function with Parameters and Return Value**
+
+```cpp
+int add(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int sum = add(10, 20);  // function call
+    cout << "Sum = " << sum << endl;
+    return 0;
+}
+```
+
+🧾 Output:
+
+```
+Sum = 30
+```
+
+---
+
+## 🔷 3. **Function Prototypes**
+
+### 📌 What is a Function Prototype?
+
+A **function prototype** is a **declaration** of the function **before `main()`**, so the compiler knows it exists.
+
+Used when the full function is written **after `main()`**.
+
+---
+
+### ✅ Syntax:
+
+```cpp
+return_type function_name(parameter_list);  // prototype
+```
+
+---
+
+### ✅ Example with Function Prototype:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+// 🔸 Function prototype
+int multiply(int, int);
+
+int main() {
+    int result = multiply(4, 5);
+    cout << "Result = " << result << endl;
+    return 0;
+}
+
+// 🔸 Function definition (after main)
+int multiply(int a, int b) {
+    return a * b;
+}
+```
+
+🧾 Output:
+
+```
+Result = 20
+```
+
+---
+
+## 🧠 Why Use Prototypes?
+
+* Helps organize large programs
+* Useful when defining functions **after `main()`**
+* Required in C++, optional in some small cases
+
+---
+
+## ✅ Summary
+
+| Feature            | Purpose                                  | Example                       |
+| ------------------ | ---------------------------------------- | ----------------------------- |
+| Function           | Block of code to perform a task          | `int sum(int a, int b)`       |
+| Call a function    | Run the function                         | `sum(5, 3);`                  |
+| Function prototype | Declare function before use              | `int sum(int, int);`          |
+| Return type        | What function gives back (`int`, `void`) | `void show();` or `int add()` |
+
+---
+---
+
+# Lec-16
+
 ## 
+
+
+
 
